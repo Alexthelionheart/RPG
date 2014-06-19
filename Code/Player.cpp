@@ -23,7 +23,7 @@ Player::Player(string filepath , int sizePreSprite , int sourceX, int sourceY  ,
 }
 bool Player::LoadFile(string filepath){
     
-    if(!ptexture.loadFromFile(resourcePath()+filepath)){
+    if(!ptexture.loadFromFile(  filepath)){
         cout << "Error While Loading the Image from the path " <<  &err() << endl;
         return false;
     }

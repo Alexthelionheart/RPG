@@ -14,13 +14,13 @@
 #include <SFML/Window.hpp>
 #include <vector>
 #include "System.h"
-#include "ResourcePath.hpp"
-#include <Player.h>
+ 
+#include "Player.h"
 #include <math.h>
 #include "Environment.h"
 #include "GameMusic.h"
 #include <ctime> 
-#include <UserInterface.h>
+#include "UserInterface.h"
 #include <cstdlib>
 using namespace sf;
 using namespace std;

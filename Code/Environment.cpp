@@ -25,7 +25,7 @@ bool Environment::LoadTreeFiles(string filepath , RenderWindow &win , int x , in
     return true;
 }
 bool Environment::LoadBackgroundFile(string filepath, RenderWindow &win){
-    if(!BackgroundTexture.loadFromFile(resourcePath()+filepath)){
+    if(!BackgroundTexture.loadFromFile(  filepath)){
         cout << "Error While Loading the Image from the path " <<  &err() << endl;
         return false;
     }

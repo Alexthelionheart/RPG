@@ -11,11 +11,11 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include <tinyxml2.h>
-#include <ResourcePath.hpp>
+ 
+ 
 using namespace std;
 using namespace sf;
-using namespace tinyxml2;
+ 
 class UserInterface{
 public:
     string filepath;

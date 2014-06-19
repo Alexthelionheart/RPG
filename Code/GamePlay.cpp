@@ -30,7 +30,7 @@ void GamePlay::GameEventHandler(){
                 system.window.pollEvent(event);
                  
                 DrawStaticObjects();
-                UI.CreateADialogFromTextFile("Tree.Norlam.txt", 29, font, system.window);
+                UI.CreateADialogFromTextFile("Dialogs/Trees/Normal.txt", 29, font, system.window);
                 
                 
                 
@@ -50,36 +50,36 @@ void GamePlay::GameEventHandler(){
 bool GamePlay::GamePlayInit() {
     
     system.window.setFramerateLimit(60);
-    player = Player("Player_Male.png", 32 , 0, 0, 2);
-    if(!player.LoadFile("Player_Male.png")){
+    player = Player("Images/Player_Male.png", 32 , 0, 0, 2);
+    if(!player.LoadFile("Images/Player_Male.png")){
         cout << "Failed Loading Players SpriteSheet" << endl;
         running = false;
         return false;
     }
     GameMusic BackgroundMusic;
-    if(!BackgroundMusic.Steamfromfile(resourcePath() + "ClearDay_Moosader.ogg")){
+    if(!BackgroundMusic.Steamfromfile(   "Music/ClearDay_Moosader.ogg")){
         cout << "Failed to load the background Music" << endl;
         running = false;
         return false;
     }
     BackgroundMusic.playing = false;
-    if(!env.LoadBackgroundFile("BackgroundGrass.png" , system.window)){
+    if(!env.LoadBackgroundFile("Images/BackgroundGrass.png" , system.window)){
         cout << "Failed to load the Background Image " << endl;
         running = false;
         return false;
     }
-    if(!env.LoadTreeFiles(resourcePath() + "EnvironmentTiles_Moosader.png", system.window, 0, 64, 64, 64)){
+    if(!env.LoadTreeFiles(   "Images/EnvironmentTiles_Moosader.png", system.window, 0, 64, 64, 64)){
         cout << "Failed to load Tree Sprite Files " << endl;
         running = false;
         return false;
     }
-    if(!UI.LoadSptireFiles("DialogBox.png", system.window)){
+    if(!UI.LoadSptireFiles("Images/DialogBox.png", system.window)){
         cout << "Failed to load the UI elements either the Xml file or the png" << endl;
 
         
         return false;
     }
-    if(!font.loadFromFile(resourcePath() + "sansation.ttf")){
+    if(!font.loadFromFile(   "Font/sansation.ttf")){
         cout << "Error While Loading the Fond File " << endl;
         return false;
     }
@@ -105,7 +105,7 @@ bool GamePlay::GamePlayInit() {
     oldTime = 0;
     currentTime = 0;
     system.window.setMouseCursorVisible(false);
-    BackgroundMusic.Steamfromfile(resourcePath() + "ClearDay_Moosader.ogg");
+    BackgroundMusic.Steamfromfile(   "Music/ClearDay_Moosader.ogg");
     BackgroundMusic.setLoop(true);
     
     running = true;

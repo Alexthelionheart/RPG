@@ -14,7 +14,7 @@
 #include <iostream>
 #include <SFML/Window.hpp>
 #include <vector>
-#include "ResourcePath.hpp"
+ 
 #include "Player.h"
 using namespace std;
 using namespace sf;

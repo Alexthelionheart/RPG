@@ -18,7 +18,7 @@
 #include <SFML/Window.hpp>
 #include <vector>
 #include "System.h"
-#include "ResourcePath.hpp"
+ 
 
 
 using namespace sf;

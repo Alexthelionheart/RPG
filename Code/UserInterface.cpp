@@ -9,13 +9,13 @@
 #include "UserInterface.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include <tinyxml2.h>
-#include <ResourcePath.hpp>
+ 
+ 
 #include <cstdio>
 #include <fstream>
 #include <cstdio>
 bool UserInterface::LoadSptireFiles(string SpritesheetPath,RenderWindow &win ){
-    if(!SptireSheet.loadFromFile(resourcePath() + SpritesheetPath)){
+    if(!SptireSheet.loadFromFile(   SpritesheetPath)){
         cout << "Error While Loading The Png" << endl;
         return false;
     }
@@ -78,7 +78,7 @@ void UserInterface::CreateADialogFromTextFile(const char* filepath , int fontsiz
     string WordString;
     string TextString;
     ifstream File;
-    File.open(resourcePath()  + filepath);
+    File.open(   filepath);
     if(!File.is_open()){
         cout << "Failed To open The text File" << endl;
         return;
@@ -98,7 +98,7 @@ void UserInterface::CreateADialogFromTextFile(const char* filepath , int fontsiz
             if(WordString.find("IMG:")){
                 WordString.erase(0,6);
                 WordString.erase(18,2);
-                if(!CharactersFaceTexture.loadFromFile(resourcePath() + WordString)){
+                if(!CharactersFaceTexture.loadFromFile(   WordString)){
                     cout << "Failed To load the character file form the file " << WordString << " Which Was presified in the txt file " << filepath;
                     return;
                 }
