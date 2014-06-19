@@ -1,0 +1,8 @@
+Art: 
+http://opengameart.org/content/lpc-pennomis-ui-elements (UI Elemets)
+http://art.devsader.com/ 
+http://www.famitsu.com/freegame/tool/chibi/index1.html (Player and NPC's (Most of them))
+Programming 
+AlexTheLionHeart (Alexander Nahapetyan)
+
+Thanks to #SFML and #moosader IRC channals for all their help
