@@ -123,7 +123,7 @@ void UserInterface::CreateADialogFromTextFile(const char* filepath , int fontsiz
     text.setCharacterSize(fontsize);
     DialogSprite.setPosition(0+5, win.getSize().y - DialogSprite.getGlobalBounds().height);
     text.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 30);
-    
+    if(firstDraw){
     for(int i = 0; i < TextString.length(); i++){ 
     Drawstring = Drawstring + TextString[i];
     text.setString(Drawstring);
@@ -133,7 +133,15 @@ void UserInterface::CreateADialogFromTextFile(const char* filepath , int fontsiz
     win.display();
     win.clear();
     }
-    return;
+    firstDraw = false;
+}else {
+  text.setString(TextString);
+    win.draw(DialogSprite);
+    win.draw(CharactersFace);
+    win.draw(text);
+    win.display();
+    win.clear();
+}
 }
 
 

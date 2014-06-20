@@ -26,6 +26,7 @@ void GamePlay::GameEventHandler(){
     
     if(env.CheckforColisionwithTrees(player) > 0){
         if(event.key.code == Keyboard::Space ){
+            UI.firstDraw = true;
             while (event.key.code != Keyboard::RShift) {
                 system.window.pollEvent(event);
                  
