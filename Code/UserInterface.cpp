@@ -141,6 +141,7 @@ void UserInterface::CreateADialogFromTextFile(const char* filepath , int fontsiz
     win.draw(text);
     win.display();
     win.clear();
+
 }
 }
 
