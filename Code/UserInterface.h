@@ -12,6 +12,9 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
  
+#include <cstdio>
+#include <fstream>
+#include <cstdio>
  
 using namespace std;
 using namespace sf;
@@ -22,9 +25,9 @@ public:
     bool ChangeMusic;
     string NewMusicPath;
     void CreateADialog(string Text , int fontsize, Font font, RenderWindow &win);
-    void CreateADialogFromTextFile(const char* filepath ,  int fontsize , Font font , RenderWindow &win);
+    void CreateADialogFromTextFile(  int fontsize , Font font , RenderWindow &win,int TheChar);
     bool LoadSptireFiles(string Spritesheet,RenderWindow &win );
-   
+    void LeadFromFile(const char* filepath );
     IntRect dialog_box_Rect;
     IntRect combobox_default_Rect;
     IntRect confirm_bg_Rect;
@@ -42,6 +45,7 @@ public:
     IntRect arrowsleft_Rect;
     IntRect arrowsup_Rect;
     IntRect arrowsdown_Rect;
+    std::ifstream File;
     bool firstDraw;
     
     

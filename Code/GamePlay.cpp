@@ -7,7 +7,8 @@
 //
 
 #include "GamePlay.h"
-
+#include <fstream>
+#include <cstdio>
 using namespace  std;
 using namespace  sf;
 
@@ -22,30 +23,6 @@ GamePlay::GamePlay(string name) : system(600,600, "Game" , Style::Titlebar | Sty
  4=up
  8=down
  */
-void GamePlay::GameEventHandler(){
-    
-    if(env.CheckforColisionwithTrees(player) > 0){
-        if(event.key.code == Keyboard::Space ){
-            UI.firstDraw = true;
-            while (event.key.code != Keyboard::RShift) {
-                system.window.pollEvent(event);
-                 
-                DrawStaticObjects();
-                UI.CreateADialogFromTextFile("Dialogs/Trees/Normal.txt", 29, font, system.window);
-                
-                
-                
-            }
-            
-        }
-    }
-    
-    
-    
-    
-    
-    
-}
 
 
 bool GamePlay::GamePlayInit() {
@@ -112,12 +89,51 @@ bool GamePlay::GamePlayInit() {
     running = true;
     return true;
 }
+
 void GamePlay::DrawStaticObjects(){
     env.DrawBackground(system.window);
     system.window.draw(player.psprite);
     env.RefreshTrees(system.window);
     
 }
+void GamePlay::GameEventHandler(){
+    
+    if(env.CheckforColisionwithTrees(player) > 0){
+        if(event.key.code == Keyboard::Space ){
+            UI.firstDraw = true;
+            UI.LeadFromFile("Dialogs/Trees/Normal.txt");
+              fseek(UI.File, 0, SEEK_END);
+                size_t fileSize = ftell(UI.File);
+                fseek(UI.File, 0, SEEK_SET);
+            while (event.key.code != Keyboard::RShift) {
+                system.window.pollEvent(event);
+               
+
+
+
+                for(unsigned int i; i < fileSize;i++){
+                UI.CreateADialogFromTextFile( 29, font, system.window,0);
+                }
+                  UI.CreateADialogFromTextFile( 29, font, system.window,0);
+              
+                
+            }
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
 bool GamePlay::Start(){
    
     

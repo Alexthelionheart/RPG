@@ -10,10 +10,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
  
- 
-#include <cstdio>
-#include <fstream>
-#include <cstdio>
+
 bool UserInterface::LoadSptireFiles(string SpritesheetPath,RenderWindow &win ){
     if(!SptireSheet.loadFromFile(   SpritesheetPath)){
         cout << "Error While Loading The Png" << endl;
@@ -72,17 +69,19 @@ void UserInterface::CreateADialog(string Text , int fontsize, Font font,RenderWi
     win.clear();
     
 }
-
-void UserInterface::CreateADialogFromTextFile(const char* filepath , int fontsize , Font font , RenderWindow &win){
-    
-    string WordString;
-    string TextString;
-    ifstream File;
-    File.open(   filepath);
+void UserInterface::LeadFromFile(const char* filepath ){
+ File.open(   filepath);
     if(!File.is_open()){
         cout << "Failed To open The text File" << endl;
         return;
     }
+}
+void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win,int TheChar){
+    
+    string WordString;
+    string TextString;
+    
+   
     
     while (File.good()) {
         File >> WordString;
@@ -123,19 +122,22 @@ void UserInterface::CreateADialogFromTextFile(const char* filepath , int fontsiz
     text.setCharacterSize(fontsize);
     DialogSprite.setPosition(0+5, win.getSize().y - DialogSprite.getGlobalBounds().height);
     text.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 30);
-    if(firstDraw){
-    for(int i = 0; i < TextString.length(); i++){ 
-    Drawstring = Drawstring + TextString[i];
+    if(TheChar > TextString.length()){
+   
+    Drawstring = Drawstring + TextString[TheChar];
     text.setString(Drawstring);
+
+   
     win.draw(DialogSprite);
     win.draw(CharactersFace);
     win.draw(text);
     win.display();
     win.clear();
-    }
-    firstDraw = false;
+    
+    
 }else {
   text.setString(TextString);
+    
     win.draw(DialogSprite);
     win.draw(CharactersFace);
     win.draw(text);
