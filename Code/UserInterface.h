@@ -45,7 +45,7 @@ public:
     IntRect arrowsleft_Rect;
     IntRect arrowsup_Rect;
     IntRect arrowsdown_Rect;
-    std::ifstream File;
+    ifstream File;
     bool firstDraw;
     
     

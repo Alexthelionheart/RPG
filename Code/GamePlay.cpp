@@ -9,15 +9,20 @@
 #include "GamePlay.h"
 #include <fstream>
 #include <cstdio>
+#include <iostream>
+
 using namespace  std;
 using namespace  sf;
 
 int amounOfTrees{100};
-GamePlay::GamePlay(string name) : system(600,600, "Game" , Style::Titlebar | Style::Close | Style::Fullscreen, true){
-  running = true;
+
+GamePlay::GamePlay(string name): 
+	system(600,600, "Game", Style::Titlebar | Style::Close | Style::Fullscreen, false)
+{
+	running = true;
 }
 /*
- return 0 if no cllision
+ return 0 if no collision
  1=left
  2=right
  4=up
@@ -101,17 +106,25 @@ void GamePlay::GameEventHandler(){
     if(env.CheckforColisionwithTrees(player) > 0){
         if(event.key.code == Keyboard::Space ){
             UI.firstDraw = true;
-            UI.LeadFromFile("Dialogs/Trees/Normal.txt");
-              fseek(UI.File, 0, SEEK_END);
-                size_t fileSize = ftell(UI.File);
-                fseek(UI.File, 0, SEEK_SET);
-            while (event.key.code != Keyboard::RShift) {
+            UI.LeadFromFile("Dialogs//Trees//Normal.txt");
+			
+			//MAYBE THIS IS DIFFERENT FOR YOU BUT FOR ME THIS IS NOT WORKING
+			//I SUGGESTED A FEW ALTERNATIVES BUT NOW WHEN THE SPACEBAR 
+			//IS PRESSED THE SCREEN GOES ALL BLACK,
+			//YOU MIGHT WANT TO LOOK INTO THIS
+
+			UI.File.seekg(0, ios::end);
+			//fseek(UI.File, 0, SEEK_END);
+			size_t fileSize = UI.File.tellg();
+			cout << fileSize << endl;
+			//size_t fileSize = ftell(UI.File);
+			UI.File.seekg(0, ios::beg);
+			//fseek(UI.File, 0, SEEK_SET);
+            
+			while (event.key.code != Keyboard::RShift) {
                 system.window.pollEvent(event);
                
-
-
-
-                for(unsigned int i; i < fileSize;i++){
+                for(unsigned int i = 0; i < fileSize;i++){
                 UI.CreateADialogFromTextFile( 29, font, system.window,0);
                 }
                   UI.CreateADialogFromTextFile( 29, font, system.window,0);
