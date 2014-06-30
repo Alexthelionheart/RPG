@@ -135,16 +135,15 @@ void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderW
     win.clear();
     
     
-}else {
-  text.setString(TextString);
-    
-    win.draw(DialogSprite);
-    win.draw(CharactersFace);
-    win.draw(text);
-    win.display();
-    win.clear();
+	}else {
+		text.setString(TextString);
 
-}
+		win.draw(DialogSprite);
+		win.draw(CharactersFace);
+		win.draw(text);
+		win.display();
+		win.clear();
+	}
 }
 
 

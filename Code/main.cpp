@@ -1,28 +1,20 @@
 #include "GamePlay.h"
-using namespace sf;
-using namespace std;
 
+//global
 float PlayerSpeed{3.f};
 
 int main(int, char const**)
 {
-    
     GamePlay game("Game");
     
-    if(!game.GamePlayInit()){
-        cout << "Error While Initilizing the gameplay" << endl;
-        return EXIT_FAILURE;
-    }
-    
-    
-    while( game.running){
-        game.Start();
+	if (!game.GamePlayInit())
+	{
+		cout << "Error While Initilizing the gameplay" << endl;
+		return 1;
+	}
+		
+    while(game.running)
+		game.Start();      
 
-        
-    }
- 
-    
-    
-    
-    return EXIT_SUCCESS;
+	return 0;
 }

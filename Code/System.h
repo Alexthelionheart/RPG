@@ -15,11 +15,12 @@
 #include <SFML/Window.hpp>
 using namespace sf;
 using namespace std;
+
 class System {
 public:
     RenderWindow window;
     
-    void DrawSprite(RenderWindow &win,sf::Sprite &objtodraw);
+    void DrawSprite(RenderWindow &win, Sprite &objtodraw);
     System(int width , int heigh , string title , Uint32 flags, bool FullScreen);
     System(int width , int heigh , string title);
     bool CreateSystem(int width , int heigh , string title , Uint32 flags, bool FullScreen);
