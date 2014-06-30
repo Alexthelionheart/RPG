@@ -107,6 +107,12 @@ void GamePlay::GameEventHandler(){
         if(event.key.code == Keyboard::Space ){
             UI.firstDraw = true;
             UI.LeadFromFile("Dialogs//Trees//Normal.txt");
+			
+			//MAYBE THIS IS DIFFERENT FOR YOU BUT FOR ME THIS IS NOT WORKING
+			//I SUGGESTED A FEW ALTERNATIVES BUT NOW WHEN THE SPACEBAR 
+			//IS PRESSED THE SCREEN GOES ALL BLACK,
+			//YOU MIGHT WANT TO LOOK INTO THIS
+
 			UI.File.seekg(0, ios::end);
 			//fseek(UI.File, 0, SEEK_END);
 			size_t fileSize = UI.File.tellg();
