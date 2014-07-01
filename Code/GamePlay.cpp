@@ -102,16 +102,17 @@ void GamePlay::GameEventHandler(){
         if(event.key.code == Keyboard::Space ){
             UI.firstDraw = true;
             UI.LeadFromFile("Dialogs/Trees/Normal.txt");
-              fseek(UI.File, 0, SEEK_END);
-                size_t fileSize = ftell(UI.File);
-                fseek(UI.File, 0, SEEK_SET);
-            while (event.key.code != Keyboard::RShift) {
+                UI.File.seekg(0, std::ios_base::end);
+              size_t size = UI.File.tellg();
+              cout << "The Size of the Document is " << endl;
+             UI.File.seekg(0, std::ios_base::beg);
+              while (event.key.code != Keyboard::RShift) {
                 system.window.pollEvent(event);
                
 
 
 
-                for(unsigned int i; i < fileSize;i++){
+                for(unsigned int i = 0; i < size;i++){
                 UI.CreateADialogFromTextFile( 29, font, system.window,0);
                 }
                   UI.CreateADialogFromTextFile( 29, font, system.window,0);
