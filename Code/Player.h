@@ -18,15 +18,16 @@
 #include <SFML/Window.hpp>
 #include <vector>
 #include "System.h"
- 
+
 
 
 using namespace sf;
 using namespace std;
 
-class Player {
+class Player
+{
 public:
-    
+
     int PlayerSpeed;
     Sprite psprite;
     Texture ptexture;
@@ -41,9 +42,9 @@ public:
     void Move(RenderWindow &win , bool animate , int colliosionSide);
     void Move(RenderWindow &win , bool animate );
     void checkforcolision(RenderWindow &win);
-        
 
-    
+
+
 };
 
 

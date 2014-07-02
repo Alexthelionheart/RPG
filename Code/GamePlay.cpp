@@ -12,12 +12,15 @@
 using namespace  std;
 using namespace  sf;
 
-int amounOfTrees{100};
-GamePlay::GamePlay(string name) : system(600,600, "Game" , Style::Titlebar | Style::Close | Style::Fullscreen, true){
-  running = true;
+int amounOfTrees {100};
+
+GamePlay::GamePlay(string name):
+    system(600, 600, "Game", Style::Titlebar | Style::Close | Style::Fullscreen, false)
+{
+    running = true;
 }
 /*
- return 0 if no cllision
+ return 0 if no collision
  1=left
  2=right
  4=up
@@ -25,109 +28,129 @@ GamePlay::GamePlay(string name) : system(600,600, "Game" , Style::Titlebar | Sty
  */
 
 
-bool GamePlay::GamePlayInit() {
-    
+bool GamePlay::GamePlayInit()
+{
+
     system.window.setFramerateLimit(60);
     player = Player("Images/Player_Male.png", 32 , 0, 0, 2);
-    if(!player.LoadFile("Images/Player_Male.png")){
+    if (!player.LoadFile("Images/Player_Male.png"))
+    {
         cout << "Failed Loading Players SpriteSheet" << endl;
         running = false;
         return false;
     }
     GameMusic BackgroundMusic;
-    if(!BackgroundMusic.Steamfromfile(   "Music/ClearDay_Moosader.ogg")){
+    if (!BackgroundMusic.Steamfromfile(   "Music/ClearDay_Moosader.ogg"))
+    {
         cout << "Failed to load the background Music" << endl;
         running = false;
         return false;
     }
     BackgroundMusic.playing = false;
-    if(!env.LoadBackgroundFile("Images/BackgroundGrass.png" , system.window)){
+    if (!env.LoadBackgroundFile("Images/BackgroundGrass.png" , system.window))
+    {
         cout << "Failed to load the Background Image " << endl;
         running = false;
         return false;
     }
-    if(!env.LoadTreeFiles(   "Images/EnvironmentTiles_Moosader.png", system.window, 0, 64, 64, 64)){
+    if (!env.LoadTreeFiles(   "Images/EnvironmentTiles_Moosader.png", system.window, 0, 64, 64, 64))
+    {
         cout << "Failed to load Tree Sprite Files " << endl;
         running = false;
         return false;
     }
-    if(!UI.LoadSptireFiles("Images/DialogBox.png", system.window)){
+    if (!UI.LoadSptireFiles("Images/DialogBox.png", system.window))
+    {
         cout << "Failed to load the UI elements either the Xml file or the png" << endl;
 
-        
+
         return false;
     }
-    if(!font.loadFromFile(   "Font/sansation.ttf")){
+    if (!font.loadFromFile(   "Font/sansation.ttf"))
+    {
         cout << "Error While Loading the Fond File " << endl;
         return false;
     }
     //Drawing Trees
-//    
-//    int xRan;
-//    int yRan;
-//	srand( time(0));
-//	for(unsigned int i = 0 ; i < amounOfTrees;++i){
-//	xRan=rand()%system.window.getSize().x;
-//    yRan= rand()%system.window.getSize().y;
-//    
-//    env.DrawTrees(system.window, xRan , yRan);
-//        
-//    }
+    //
+    //    int xRan;
+    //    int yRan;
+    //  srand( time(0));
+    //  for(unsigned int i = 0 ; i < amounOfTrees;++i){
+    //  xRan=rand()%system.window.getSize().x;
+    //    yRan= rand()%system.window.getSize().y;
+    //
+    //    env.DrawTrees(system.window, xRan , yRan);
+    //
+    //    }
     env.DrawTrees(system.window, 312, 231);
     env.DrawTrees(system.window, 521, 313);
     env.DrawTrees(system.window, 412, 543);
     env.DrawTrees(system.window, 543, 231);
     env.DrawTrees(system.window, 231, 412);
     env.DrawTrees(system.window, 312, 123);
-    
+
     oldTime = 0;
     currentTime = 0;
     system.window.setMouseCursorVisible(false);
     BackgroundMusic.Steamfromfile(   "Music/ClearDay_Moosader.ogg");
     BackgroundMusic.setLoop(true);
-    
+
     running = true;
     return true;
 }
 
-void GamePlay::DrawStaticObjects(){
+void GamePlay::DrawStaticObjects()
+{
     env.DrawBackground(system.window);
     system.window.draw(player.psprite);
     env.RefreshTrees(system.window);
-    
+
 }
-void GamePlay::GameEventHandler(){
-    
-    if(env.CheckforColisionwithTrees(player) > 0){
-        if(event.key.code == Keyboard::Space ){
+void GamePlay::GameEventHandler()
+{
+
+    if (env.CheckforColisionwithTrees(player) > 0)
+    {
+        if (event.key.code == Keyboard::Space )
+        {
             UI.firstDraw = true;
             UI.LeadFromFile("Dialogs/Trees/Normal.txt");
-                UI.File.seekg(0, std::ios_base::end);
-              size_t size = UI.File.tellg();
-              cout << "The Size of the Document is " << endl;
-             UI.File.seekg(0, std::ios_base::beg);
-              while (event.key.code != Keyboard::RShift) {
+            string TestString;
+            UI.File >> TestString;
+
+           
+            cout << "File Size Is " << TestString.length() << endl;
+            cout << "The Test String is " << TestString << endl;
+           
+
+            while (event.key.code != Keyboard::RShift)
+            {
                 system.window.pollEvent(event);
-               
 
 
 
-                for(unsigned int i = 0; i < size;i++){
-                UI.CreateADialogFromTextFile( 29, font, system.window,0);
+
+                for (unsigned int i = 0; i < TestString.length(); i++)
+                {
+                    UI.CreateADialogFromTextFile( 29, font, system.window, i);
+                    DrawStaticObjects();
                 }
-                  UI.CreateADialogFromTextFile( 29, font, system.window,0);
-              
-                
+                UI.CreateADialogFromTextFile( 29, font, system.window, 36);
+                DrawStaticObjects();
+
+
             }
-            
+
         }
+        UI.File.close();
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 }
 
 
@@ -135,57 +158,68 @@ void GamePlay::GameEventHandler(){
 
 
 
-bool GamePlay::Start(){
-   
-    
-    while( system.window.isOpen()){
-        
+bool GamePlay::Start()
+{
+
+
+    while ( system.window.isOpen())
+    {
+
         system.window.pollEvent(event);
-        
-        if (event.type == Event::Closed) {
+
+        if (event.type == Event::Closed)
+        {
             system.window.close();
-            
+
         }
-        
+
         currentTime =  clock.restart().asSeconds();
-        
-        
+
+
         //      float timepassed =  ( oldTime - currentTime);
         //        cout << "Time passed is " << timepassed << endl;
-        
-        if(oldTime >= .20){
-            player.Move(system.window,true, env.CheckforColisionwithTrees(player));
-            
+
+        if (oldTime >= .20)
+        {
+            player.Move(system.window, true, env.CheckforColisionwithTrees(player));
+
             oldTime = 0;
-            
-        }else {
-            player.Move(system.window,false, env.CheckforColisionwithTrees(player));
+
         }
-        
-        
+        else
+        {
+            player.Move(system.window, false, env.CheckforColisionwithTrees(player));
+        }
+
+
         GameEventHandler();
-        
-        if(Keyboard::isKeyPressed(Keyboard::Key::M)){
-            if(BackgroundMusic.playing){
+
+        if (Keyboard::isKeyPressed(Keyboard::Key::M))
+        {
+            if (BackgroundMusic.playing)
+            {
                 BackgroundMusic.mute();
                 BackgroundMusic.playing = false;
-            }else{
+            }
+            else
+            {
                 BackgroundMusic.play();
                 BackgroundMusic.playing = true;
             }
         }
-        
-        
+
+
         oldTime +=  currentTime ;
-        if(Keyboard::isKeyPressed(Keyboard::Key::Escape)){
+        if (Keyboard::isKeyPressed(Keyboard::Key::Escape))
+        {
             system.window.close();
             break;
-            
+
         }
         DrawStaticObjects();
         system.window.display();
         system.window.clear();
-        
+
     }
     BackgroundMusic.stop();
     running = false;

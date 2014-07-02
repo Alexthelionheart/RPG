@@ -11,23 +11,24 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
- 
+
 #include <cstdio>
 #include <fstream>
 #include <cstdio>
- 
+
 using namespace std;
 using namespace sf;
- 
-class UserInterface{
+
+class UserInterface
+{
 public:
     string filepath;
     bool ChangeMusic;
     string NewMusicPath;
     void CreateADialog(string Text , int fontsize, Font font, RenderWindow &win);
-    void CreateADialogFromTextFile(  int fontsize , Font font , RenderWindow &win,int TheChar);
-    bool LoadSptireFiles(string Spritesheet,RenderWindow &win );
-    void LeadFromFile(const char* filepath );
+    void CreateADialogFromTextFile(  int fontsize , Font font , RenderWindow &win, int TheChar);
+    bool LoadSptireFiles(string Spritesheet, RenderWindow &win );
+    void LeadFromFile(const char *filepath );
     IntRect dialog_box_Rect;
     IntRect combobox_default_Rect;
     IntRect confirm_bg_Rect;
@@ -47,26 +48,26 @@ public:
     IntRect arrowsdown_Rect;
     std::ifstream File;
     bool firstDraw;
-    
-    
+
+
     Texture SptireSheet;
     Texture CharactersFaceTexture;
     Sprite DialogSprite;
     Sprite NextarrowSprite;
     Sprite MenuSprite;
     Sprite CharactersFace;
-    
-/*
-saparate each Part of a dialog with a <<NewBox>> if a txt file
-Use \n if a string 
-*/    
-//To DO add image
-   //Plans and a tag <<Image:filename.png>> and read it form the txt 
- 
-    
-    
-    
-    
+
+    /*
+    saparate each Part of a dialog with a <<NewBox>> if a txt file
+    Use \n if a string
+    */
+    //To DO add image
+    //Plans and a tag <<Image:filename.png>> and read it form the txt
+
+
+
+
+
 };
 
 

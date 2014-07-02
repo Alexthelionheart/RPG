@@ -7,26 +7,36 @@
 //
 
 #include "System.h"
-System::System(int width , int heigh , string title , Uint32 flags , bool FullScreen){
-    if(FullScreen){
-        
-        window.create(VideoMode(),title,flags);
-    }else{
-        window.create(VideoMode(width,heigh),title,flags);
+System::System(int width , int heigh , string title , Uint32 flags , bool FullScreen)
+{
+    if (FullScreen)
+    {
+
+        window.create(VideoMode(), title, flags);
+    }
+    else
+    {
+        window.create(VideoMode(width, heigh), title, flags);
     }
 }
-System::System(int width , int heigh , string title){
-    window.create(VideoMode(width,heigh),title);
+System::System(int width , int heigh , string title)
+{
+    window.create(VideoMode(width, heigh), title);
 }
-void DrawSprite(RenderWindow &win,sf::Sprite &objtodraw){
+void DrawSprite(RenderWindow &win, sf::Sprite &objtodraw)
+{
     win.draw(objtodraw);
 }
-bool System::CreateSystem(int width , int heigh , string title , Uint32 flags, bool FullScreen) {
-    if(FullScreen){
-        
-        window.create(VideoMode(),title,flags);
-    }else{
-        window.create(VideoMode(width,heigh),title,flags);
+bool System::CreateSystem(int width , int heigh , string title , Uint32 flags, bool FullScreen)
+{
+    if (FullScreen)
+    {
+
+        window.create(VideoMode(), title, flags);
+    }
+    else
+    {
+        window.create(VideoMode(width, heigh), title, flags);
     }
     return true;
 }

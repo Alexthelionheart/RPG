@@ -8,22 +8,28 @@
 
 
 #include "GameMusic.h"
-void GameMusic::stop(){
+void GameMusic::stop()
+{
     BackgroundMusic.stop();
 }
-void GameMusic::mute(){
+void GameMusic::mute()
+{
     BackgroundMusic.pause();
 }
 
-void GameMusic::play(){
+void GameMusic::play()
+{
     BackgroundMusic.play();
 }
-bool GameMusic::Steamfromfile(string path){
-    if(!BackgroundMusic.openFromFile(path)){
+bool GameMusic::Steamfromfile(string path)
+{
+    if (!BackgroundMusic.openFromFile(path))
+    {
         return false;
     }
     return true;
 }
-void GameMusic::setLoop(bool state){
+void GameMusic::setLoop(bool state)
+{
     BackgroundMusic.setLoop(state);
 }

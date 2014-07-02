@@ -14,21 +14,22 @@
 #include <SFML/Window.hpp>
 #include <vector>
 #include "System.h"
- 
+
 #include "Player.h"
 #include <math.h>
 #include "Environment.h"
 #include "GameMusic.h"
-#include <ctime> 
+#include <ctime>
 #include "UserInterface.h"
 #include <cstdlib>
 using namespace sf;
 using namespace std;
 
-class GamePlay{
+class GamePlay
+{
 public:
     GamePlay(string name);
-    float PlayerSpeed{3.f};
+    float PlayerSpeed {3.f};
     Environment env;
     System system;
     Player player;
@@ -45,7 +46,7 @@ public:
     UserInterface UI;
 private:
     void DrawStaticObjects();
-    
-    
+
+
 };
 #endif /* defined(__Game1__GamePlay__) */

@@ -19,7 +19,8 @@ using namespace std;
 using namespace sf;
 
 
-class GameMusic {
+class GameMusic
+{
 public:
     bool playing;
     bool Steamfromfile(string path);
@@ -27,14 +28,14 @@ public:
     void stop();
     void play();
     void mute();
-   
+
 
 private:
     sf::Music BackgroundMusic;
-    
-    
-    
-    
+
+
+
+
 };
 
 
