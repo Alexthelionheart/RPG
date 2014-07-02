@@ -7,4 +7,6 @@ clang++ Code/*.cpp -std=c++11  -framework sfml-system -framework sfml-window -fr
 echo "copying assets"
 cp -f -r Assets/* Build/
 echo "Done the game was compiled as an .out file  Build/GameBuild-$now.out"
-
+cd Build
+echo "Starting" 
+./GameBuild-$now.out
