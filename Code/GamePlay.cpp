@@ -17,6 +17,7 @@ int amounOfTrees {100};
 GamePlay::GamePlay(string name):
     system(600, 600, "Game", Style::Titlebar | Style::Close | Style::Fullscreen, false)
 {
+    system.window.setFramerateLimit(30);
     running = true;
 }
 /*
@@ -114,27 +115,15 @@ void GamePlay::GameEventHandler()
     {
         if (event.key.code == Keyboard::Space )
         {
-            UI.firstDraw = true;
-           
-            string TestString;
-            UI.File >> TestString;
-
-           
-            cout << "File Size Is " << TestString.length() << endl;
-            cout << "The Test String is " << TestString << endl;
            
 
             while (event.key.code != Keyboard::RShift)
             {
                 system.window.pollEvent(event);
-
-
-
-
-                
-                UI.CreateADialogFromTextFile( 29, font, system.window,"Dialogs/Trees/Normal.txt");
                 DrawStaticObjects();
 
+                UI.CreateADialogFromTextFile( 29, font, system.window,"Dialogs/Trees/Normal.txt");
+                
 
             }
 

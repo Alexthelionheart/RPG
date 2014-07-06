@@ -73,16 +73,18 @@ void UserInterface::CreateADialog(string Text , int fontsize, Font font, RenderW
 
 }
 
-
-
-void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win , const char *filepath)
-{
-    File.open(filepath);
+bool LoadTextFile(const char *filepath){
+File.open(filepath);
     if (!File.is_open())
     {
         cout << "Failed To open The text File" << endl;
         return;
     }
+}
+
+void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win , const char *filepath)
+{
+    
     string WordString;
     string TextString;
 
@@ -126,14 +128,18 @@ void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderW
 
 
 
-    string Drawstring;
+
     sf::Text text;
     text.setFont(font);
     text.setString(TextString);
     text.setCharacterSize(fontsize);
     DialogSprite.setPosition(0 + 5, win.getSize().y - DialogSprite.getGlobalBounds().height);
     text.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 30);
-
+    win.draw(DialogSprite);
+    win.draw(text);
+    win.display();
+    win.clear();
+    File.close();
 }
 
 
