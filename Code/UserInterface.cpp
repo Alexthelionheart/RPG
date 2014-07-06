@@ -113,12 +113,8 @@ File.open(filepath);
         } 
         else
         {
-            if(WordString.compare("/n") == 0){
-            TextString = TextString + " | ";
-        }else {
             cout << "WordString is " << WordString << endl;
             TextString = TextString + WordString + " ";
-        }
         }
 
 
@@ -131,41 +127,24 @@ File.open(filepath);
 
 void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win,int TheChar )
 {
-    sf::Text line1;
-    sf::Text line2;
-    sf::Text line3;
+    sf::Text text;
     
     if(TheChar < TextString.length() - 1){
-    Drawstringline1 = Drawstringline1 + TextString[TheChar];
+    Drawstring = Drawstring + TextString[TheChar];
+    if(Drawstring == "|"){
+        cout << "New Line Char was found" << endl;
+    }
 }else{
-    Drawstringline1 = TextString;
+    Drawstring = TextString;
     firstDraw = false;
 }
-    line1.setFont(font);
-    line1.setString(Drawstringline1);
-    line1.setCharacterSize(fontsize);
-    line2.setFont(font);
-    line2.setString(Drawstringline2);
-    line2.setCharacterSize(fontsize);
-    line3.setFont(font);
-    line3.setString(Drawstringline3);
-    line3.setCharacterSize(fontsize);
-    
-
-
-
-
+    text.setFont(font);
+    text.setString(Drawstring);
+    text.setCharacterSize(fontsize);
     DialogSprite.setPosition(0 + 5, win.getSize().y - DialogSprite.getGlobalBounds().height);
-    line1.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 30);
-    line2.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 60);
-    line3.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 90);
-   
-
-
+    text.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 30);
     win.draw(DialogSprite);
-    win.draw(line1);
-    win.draw(line2);
-    win.draw(line3);
+    win.draw(text);
     win.display();
     win.clear();
 

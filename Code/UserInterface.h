@@ -47,9 +47,7 @@ public:
     IntRect arrowsup_Rect;
     IntRect arrowsdown_Rect;
     std::ifstream File;
-    string Drawstringline1;
-    string Drawstringline2;
-    string Drawstringline3;
+    string Drawstring;
     bool firstDraw;
     string TextString;
 

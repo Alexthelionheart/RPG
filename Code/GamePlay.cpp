@@ -134,10 +134,8 @@ void GamePlay::GameEventHandler()
                  DrawStaticObjects();
                 UI.CreateADialogFromTextFile( 29, font, system.window,UI.TextString.length());
             }
-            //UI.Drawstring = "";
-            UI.Drawstringline1 = "";
-            UI.Drawstringline2 = "";
-            UI.Drawstringline3 = "";
+            UI.Drawstring = "";
+            
             }
 
         }
