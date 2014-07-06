@@ -77,16 +77,11 @@ bool UserInterface::LoadTextFile(const char *filepath){
 File.open(filepath);
     if (!File.is_open())
     {
-        cout << "Failed To open The text File" << endl;
-        return;
+        cout << "Failed To open The text File from That" << filepath << endl;
+        return false;
     }
-}
-
-void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win )
-{
-    
-    string WordString;
-    string TextString;
+     string WordString;
+    TextString = "";
 
 
 
@@ -109,8 +104,8 @@ void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderW
                 WordString.erase(18, 2);
                 if (!CharactersFaceTexture.loadFromFile(   WordString))
                 {
-                    cout << "Failed To load the character file form the file " << WordString << " Which Was presified in the txt file " << filepath;
-                    return;
+                    cout << "Failed To load the character file form the file " << WordString << " Which Was presified in the txt file ";
+                    return false;
                 }
                 CharactersFace.setTexture(CharactersFaceTexture);
             }
@@ -126,9 +121,11 @@ void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderW
 
     }
 
+    return true;
+}
 
-
-
+void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win )
+{
     sf::Text text;
     text.setFont(font);
     text.setString(TextString);
@@ -139,7 +136,7 @@ void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderW
     win.draw(text);
     win.display();
     win.clear();
-    File.close();
+
 }
 
 

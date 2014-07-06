@@ -116,7 +116,10 @@ void GamePlay::GameEventHandler()
         if (event.key.code == Keyboard::Space )
         {
            
-            UI.LoadTextFile("Dialogs/Trees/Normal.txt");
+            if(!UI.LoadTextFile("Dialogs/Trees/Normal.txt")){
+                cout << "Can't Open The Dialog File for Tree " << endl;
+                return;
+            }
             while (event.key.code != Keyboard::RShift)
             {
                 system.window.pollEvent(event);

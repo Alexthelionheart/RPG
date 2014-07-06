@@ -28,7 +28,7 @@ public:
     void CreateADialog(string Text , int fontsize, Font font, RenderWindow &win);
     void CreateADialogFromTextFile(  int fontsize , Font font , RenderWindow &win);
     bool LoadSptireFiles(string Spritesheet, RenderWindow &win );
-    bool LoadTextFile(const char *filepath)
+    bool LoadTextFile(const char *filepath);
     IntRect dialog_box_Rect;
     IntRect combobox_default_Rect;
     IntRect confirm_bg_Rect;
@@ -48,7 +48,7 @@ public:
     IntRect arrowsdown_Rect;
     std::ifstream File;
     bool firstDraw;
-
+    string TextString;
 
     Texture SptireSheet;
     Texture CharactersFaceTexture;
