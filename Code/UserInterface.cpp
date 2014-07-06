@@ -164,6 +164,8 @@ void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderW
 
     win.draw(DialogSprite);
     win.draw(line1);
+    win.draw(line2);
+    win.draw(line3);
     win.display();
     win.clear();
 
