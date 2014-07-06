@@ -26,9 +26,9 @@ public:
     bool ChangeMusic;
     string NewMusicPath;
     void CreateADialog(string Text , int fontsize, Font font, RenderWindow &win);
-    void CreateADialogFromTextFile(  int fontsize , Font font , RenderWindow &win, int TheChar);
+    void CreateADialogFromTextFile(  int fontsize , Font font , RenderWindow &win,const char *filepath);
     bool LoadSptireFiles(string Spritesheet, RenderWindow &win );
-    void LeadFromFile(const char *filepath );
+    
     IntRect dialog_box_Rect;
     IntRect combobox_default_Rect;
     IntRect confirm_bg_Rect;

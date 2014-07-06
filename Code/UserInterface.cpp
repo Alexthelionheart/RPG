@@ -72,7 +72,10 @@ void UserInterface::CreateADialog(string Text , int fontsize, Font font, RenderW
     win.clear();
 
 }
-void UserInterface::LeadFromFile(const char *filepath )
+
+
+
+void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win , const char *filepath)
 {
     File.open(filepath);
     if (!File.is_open())
@@ -80,10 +83,6 @@ void UserInterface::LeadFromFile(const char *filepath )
         cout << "Failed To open The text File" << endl;
         return;
     }
-}
-void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win, int TheChar)
-{
-
     string WordString;
     string TextString;
 
@@ -134,40 +133,8 @@ void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderW
     text.setCharacterSize(fontsize);
     DialogSprite.setPosition(0 + 5, win.getSize().y - DialogSprite.getGlobalBounds().height);
     text.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 30);
-    if (TheChar < TextString.length())
-    {
-        cout << "Draw string is " << Drawstring << endl;
-        cout << "The hole text is " << TextString << endl;
-        cout << "The Char is " << TheChar << endl;
-        Drawstring = Drawstring + TextString[TheChar];
-        text.setString(Drawstring);
 
-
-        win.draw(DialogSprite);
-        win.draw(CharactersFace);
-        win.draw(text);
-        win.display();
-        win.clear();
-
-
-
-    }
-    else
-    {
-        text.setString(TextString);
-        cout << "Draw string is " << Drawstring << endl;
-        cout << "The hole text is " << TextString << endl;
-        cout << "The Char is " << TheChar << endl;
-
-        win.draw(DialogSprite);
-        win.draw(CharactersFace);
-        win.draw(text);
-        win.display();
-        win.clear();
-    }
 }
-
-
 
 
 

@@ -115,7 +115,7 @@ void GamePlay::GameEventHandler()
         if (event.key.code == Keyboard::Space )
         {
             UI.firstDraw = true;
-            UI.LeadFromFile("Dialogs/Trees/Normal.txt");
+           
             string TestString;
             UI.File >> TestString;
 
@@ -131,12 +131,8 @@ void GamePlay::GameEventHandler()
 
 
 
-                for (unsigned int i = 0; i < TestString.length(); i++)
-                {
-                    UI.CreateADialogFromTextFile( 29, font, system.window, i);
-                    DrawStaticObjects();
-                }
-                UI.CreateADialogFromTextFile( 29, font, system.window, 36);
+                
+                UI.CreateADialogFromTextFile( 29, font, system.window,"Dialogs/Trees/Normal.txt");
                 DrawStaticObjects();
 
 
