@@ -110,10 +110,15 @@ File.open(filepath);
                 CharactersFace.setTexture(CharactersFaceTexture);
             }
 
-        }
+        } 
         else
         {
+            if(WordString.compare("/n") == 0){
+            TextString = TextString + " | ";
+        }else {
+            cout << "WordString is " << WordString << endl;
             TextString = TextString + WordString + " ";
+        }
         }
 
 
@@ -126,21 +131,39 @@ File.open(filepath);
 
 void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win,int TheChar )
 {
-    sf::Text text;
-    string Drawstring;
-    if(TheChar < TextString.length()){
-    Drawstring = Drawstring + TextString[TheChar];
+    sf::Text line1;
+    sf::Text line2;
+    sf::Text line3;
+    
+    if(TheChar < TextString.length() - 1){
+    Drawstringline1 = Drawstringline1 + TextString[TheChar];
 }else{
-    Drawstring = TextString;
+    Drawstringline1 = TextString;
     firstDraw = false;
 }
-    text.setFont(font);
-    text.setString(TextString);
-    text.setCharacterSize(fontsize);
+    line1.setFont(font);
+    line1.setString(Drawstringline1);
+    line1.setCharacterSize(fontsize);
+    line2.setFont(font);
+    line2.setString(Drawstringline2);
+    line2.setCharacterSize(fontsize);
+    line3.setFont(font);
+    line3.setString(Drawstringline3);
+    line3.setCharacterSize(fontsize);
+    
+
+
+
+
     DialogSprite.setPosition(0 + 5, win.getSize().y - DialogSprite.getGlobalBounds().height);
-    text.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 30);
+    line1.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 30);
+    line2.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 60);
+    line3.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 90);
+   
+
+
     win.draw(DialogSprite);
-    win.draw(text);
+    win.draw(line1);
     win.display();
     win.clear();
 

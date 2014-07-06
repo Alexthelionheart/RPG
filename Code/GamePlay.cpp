@@ -124,15 +124,20 @@ void GamePlay::GameEventHandler()
             while (event.key.code != Keyboard::RShift)
             {
                 system.window.pollEvent(event);
-                DrawStaticObjects();
+               
                 if(UI.firstDraw){
                 for (unsigned int i = 0; i < UI.TextString.length(); i++){
+                     DrawStaticObjects();
                 UI.CreateADialogFromTextFile( 29, font, system.window,i);
                 }
             }else{
+                 DrawStaticObjects();
                 UI.CreateADialogFromTextFile( 29, font, system.window,UI.TextString.length());
             }
-
+            //UI.Drawstring = "";
+            UI.Drawstringline1 = "";
+            UI.Drawstringline2 = "";
+            UI.Drawstringline3 = "";
             }
 
         }
