@@ -131,7 +131,7 @@ void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderW
     
     if(TheChar < TextString.length() - 1){
     Drawstring = Drawstring + TextString[TheChar];
-    if(Drawstring == "|"){
+    if(TextString[TheChar] == "|"){
         cout << "New Line Char was found" << endl;
     }
 }else{
