@@ -18,7 +18,7 @@
 #include <SFML/Window.hpp>
 #include <vector>
 #include "System.h"
-
+#include "NPC.h"
 
 
 using namespace sf;
@@ -42,6 +42,7 @@ public:
     void Move(RenderWindow &win , bool animate , int colliosionSide);
     void Move(RenderWindow &win , bool animate );
     void checkforcolision(RenderWindow &win);
+    std::vector<NPC> Party;
 
 
 

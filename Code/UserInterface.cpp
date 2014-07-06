@@ -103,20 +103,19 @@ bool UserInterface::LoadTextFile(const char *filepath)
             if (WordString.find("IMG:"))
             {
                 WordString.erase(0, 6);
-                WordString = WordString.substr(0, WordString.size()-2);
+                WordString = WordString.substr(0, WordString.size() - 2);
                 if (!CharactersFaceTexture.loadFromFile(  "Images/" + WordString))
                 {
                     cout << "Failed To load the character file form the file " << WordString << " Which Was presified in the txt file ";
                     return false;
                 }
                 CharactersFace.setTexture(CharactersFaceTexture);
-                
+
             }
 
         }
         else
         {
-            cout << "WordString is " << WordString << endl;
             TextString = TextString + WordString + " ";
         }
 
@@ -181,8 +180,8 @@ void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderW
     textline2.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 65);
     textline3.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 100);
     CharactersFace.setPosition(DialogSprite.getGlobalBounds().left + 20, DialogSprite.getGlobalBounds().top + 30);
-    
-   
+
+
     win.draw(DialogSprite);
     win.draw(CharactersFace);
     win.draw(textline1);

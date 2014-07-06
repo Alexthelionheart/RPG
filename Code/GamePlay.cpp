@@ -41,12 +41,7 @@ bool GamePlay::GamePlayInit()
         return false;
     }
     GameMusic BackgroundMusic;
-    if (!BackgroundMusic.Steamfromfile(   "Music/ClearDay_Moosader.ogg"))
-    {
-        cout << "Failed to load the background Music" << endl;
-        running = false;
-        return false;
-    }
+
     BackgroundMusic.playing = false;
     if (!env.LoadBackgroundFile("Images/BackgroundGrass.png" , system.window))
     {
@@ -72,6 +67,12 @@ bool GamePlay::GamePlayInit()
         cout << "Error While Loading the Fond File " << endl;
         return false;
     }
+    if (!BackgroundMusic.Steamfromfile("Music/ClearDay_Moosader.ogg"))
+    {
+        cout << "Failed to load the background Music" << endl;
+        running = false;
+        return false;
+    }
     //Drawing Trees
     //
     //    int xRan;
@@ -94,7 +95,7 @@ bool GamePlay::GamePlayInit()
     oldTime = 0;
     currentTime = 0;
     system.window.setMouseCursorVisible(false);
-    BackgroundMusic.Steamfromfile(   "Music/ClearDay_Moosader.ogg");
+
     BackgroundMusic.setLoop(true);
 
     running = true;
@@ -125,16 +126,38 @@ void GamePlay::GameEventHandler()
             UI.Drawstringline1 = " ";
             UI.Drawstringline2 = "";
             UI.Drawstringline3 = "";
+            sf::Clock clock;
+
+            Time newTime;
             while (event.key.code != Keyboard::RShift)
             {
+
                 system.window.pollEvent(event);
 
+
+                cout << "The Time is " << newTime.asMilliseconds() << endl;
+
                 if (UI.firstDraw)
-                {
-                    for (unsigned int i = 0; i < UI.TextString.length(); i++)
+                { 
+                    unsigned int i = 0;
+                    unsigned int textStringLength = UI.TextString.length();
+                    while (i < textStringLength )
                     {
-                        DrawStaticObjects();
-                        UI.CreateADialogFromTextFile( 29, font, system.window, i);
+                        if (newTime.asMilliseconds() > 25)
+                        {
+
+                            DrawStaticObjects();
+                            UI.CreateADialogFromTextFile( 29, font, system.window, i);
+                            i++;
+                            newTime = clock.restart();
+                            newTime = clock.restart();
+                            
+                        }
+                        else
+                        {
+                    
+                            newTime = clock.getElapsedTime();
+                        }
                     }
                 }
                 else
@@ -142,12 +165,14 @@ void GamePlay::GameEventHandler()
                     DrawStaticObjects();
                     UI.CreateADialogFromTextFile( 29, font, system.window, UI.TextString.length());
                 }
-               
+                newTime = clock.restart();
+
+
 
             }
-                UI.Drawstringline1 = " ";
-                UI.Drawstringline2 = "";
-                UI.Drawstringline3 = "";
+            UI.Drawstringline1 = " ";
+            UI.Drawstringline2 = "";
+            UI.Drawstringline3 = "";
         }
         UI.File.close();
     }

@@ -10,7 +10,8 @@
 #define __Game1__NPC__
 
 #include <iostream>
-
+#include "Technique.h"
+#include "Magic.h"
 
 using namespace std;
 
@@ -18,10 +19,13 @@ class NPC {
     bool Fighter;
     string Name;
     int level;
-    int half;
+    int healf;
     string DialogPrefix;
-    
-    
+    bool inYourParty;
+    vector<Technique> Techs;
+    vector<Magic> Mattacks;
+    int attack;
+
     
     
     

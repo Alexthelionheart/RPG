@@ -3,6 +3,13 @@ http://opengameart.org/content/lpc-pennomis-ui-elements (UI Elemets)
 http://art.devsader.com/ 
 http://www.famitsu.com/freegame/tool/chibi/index1.html (Player and NPC's (Most of them))
 http://www.rpgmakervx.net/lofiversion/index.php/t23447.html (faces)
+Other Stuff 
+http://opengameart.org/content/rpg-tiles-cobble-stone-paths-town-objects
+http://opengameart.org/content/2d-lost-garden-tileset-transition-to-jetrels-wood-tileset
+http://opengameart.org/content/backdrops-for-story-and-level-for-ardentryst-by-jordan-trudgett
+http://opengameart.org/content/recolor-all-the-items
+http://opengameart.org/content/32-weapon-icons
+http://opengameart.org/content/24x32-characters-with-faces-big-pack
 Programming 
 AlexTheLionHeart (Alexander Nahapetyan)
 
