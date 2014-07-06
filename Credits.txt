@@ -2,6 +2,7 @@ Art:
 http://opengameart.org/content/lpc-pennomis-ui-elements (UI Elemets)
 http://art.devsader.com/ 
 http://www.famitsu.com/freegame/tool/chibi/index1.html (Player and NPC's (Most of them))
+http://www.rpgmakervx.net/lofiversion/index.php/t23447.html (faces)
 Programming 
 AlexTheLionHeart (Alexander Nahapetyan)
 

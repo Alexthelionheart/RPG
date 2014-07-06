@@ -115,29 +115,39 @@ void GamePlay::GameEventHandler()
     {
         if (event.key.code == Keyboard::Space )
         {
-           
-            if(!UI.LoadTextFile("Dialogs/Trees/Normal.txt")){
+            UI.dialogLine = 1;
+            if (!UI.LoadTextFile("Dialogs/Trees/Normal.txt"))
+            {
                 cout << "Can't Open The Dialog File for Tree " << endl;
                 return;
             }
             UI.firstDraw = true;
+            UI.Drawstringline1 = " ";
+            UI.Drawstringline2 = "";
+            UI.Drawstringline3 = "";
             while (event.key.code != Keyboard::RShift)
             {
                 system.window.pollEvent(event);
-               
-                if(UI.firstDraw){
-                for (unsigned int i = 0; i < UI.TextString.length(); i++){
-                     DrawStaticObjects();
-                UI.CreateADialogFromTextFile( 29, font, system.window,i);
-                }
-            }else{
-                 DrawStaticObjects();
-                UI.CreateADialogFromTextFile( 29, font, system.window,UI.TextString.length());
-            }
-            UI.Drawstring = "";
-            
-            }
 
+                if (UI.firstDraw)
+                {
+                    for (unsigned int i = 0; i < UI.TextString.length(); i++)
+                    {
+                        DrawStaticObjects();
+                        UI.CreateADialogFromTextFile( 29, font, system.window, i);
+                    }
+                }
+                else
+                {
+                    DrawStaticObjects();
+                    UI.CreateADialogFromTextFile( 29, font, system.window, UI.TextString.length());
+                }
+               
+
+            }
+                UI.Drawstringline1 = " ";
+                UI.Drawstringline2 = "";
+                UI.Drawstringline3 = "";
         }
         UI.File.close();
     }

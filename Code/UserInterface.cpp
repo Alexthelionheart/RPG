@@ -73,14 +73,15 @@ void UserInterface::CreateADialog(string Text , int fontsize, Font font, RenderW
 
 }
 
-bool UserInterface::LoadTextFile(const char *filepath){
-File.open(filepath);
+bool UserInterface::LoadTextFile(const char *filepath)
+{
+    File.open(filepath);
     if (!File.is_open())
     {
         cout << "Failed To open The text File from That" << filepath << endl;
         return false;
     }
-     string WordString;
+    string WordString;
     TextString = "";
 
 
@@ -95,22 +96,24 @@ File.open(filepath);
          * <<NewBox>> - Create a new Dialog box
          * <<Y?N>> - choose Yes or NO
          */
-        if (WordString.find("<<|") != string::npos)
+        if (WordString.find("<<") != string::npos)
         {
+            cout << WordString << " is a tag" << endl;
             //Chanking if it is a Image Tag
             if (WordString.find("IMG:"))
             {
                 WordString.erase(0, 6);
-                WordString.erase(18, 2);
-                if (!CharactersFaceTexture.loadFromFile(   WordString))
+                WordString = WordString.substr(0, WordString.size()-2);
+                if (!CharactersFaceTexture.loadFromFile(  "Images/" + WordString))
                 {
                     cout << "Failed To load the character file form the file " << WordString << " Which Was presified in the txt file ";
                     return false;
                 }
                 CharactersFace.setTexture(CharactersFaceTexture);
+                
             }
 
-        } 
+        }
         else
         {
             cout << "WordString is " << WordString << endl;
@@ -125,26 +128,66 @@ File.open(filepath);
     return true;
 }
 
-void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win,int TheChar )
+void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win, int TheChar )
 {
-    sf::Text text;
-    
-    if(TheChar < TextString.length() - 1){
-    Drawstring = Drawstring + TextString[TheChar];
-    if(TextString[TheChar] == "|"){
-        cout << "New Line Char was found" << endl;
+    sf::Text textline1;
+    sf::Text textline2;
+    sf::Text textline3;
+    if (TheChar < TextString.length() - 1 && dialogLine == 1)
+    {
+        if (TextString[TheChar] == '|')
+        {
+            dialogLine++;
+        }
+        else
+        {
+            Drawstringline1 = Drawstringline1 + TextString[TheChar];
+        }
+
     }
-}else{
-    Drawstring = TextString;
-    firstDraw = false;
-}
-    text.setFont(font);
-    text.setString(Drawstring);
-    text.setCharacterSize(fontsize);
+    else if (TheChar < TextString.length() - 1 && dialogLine == 2)
+    {
+        if (TextString[TheChar] == '|')
+        {
+            dialogLine++;
+        }
+        else
+        {
+            Drawstringline2 = Drawstringline2 + TextString[TheChar];
+        }
+    }
+    else if (TheChar < TextString.length() - 1 && dialogLine == 3)
+    {
+
+        Drawstringline3 = Drawstringline3 + TextString[TheChar];
+    }
+    else
+    {
+
+        firstDraw = false;
+    }
+    textline1.setFont(font);
+    textline1.setString(Drawstringline1);
+    textline1.setCharacterSize(fontsize);
+    textline2.setFont(font);
+    textline2.setString(Drawstringline2);
+    textline2.setCharacterSize(fontsize);
+    textline3.setFont(font);
+    textline3.setString(Drawstringline3);
+    textline3.setCharacterSize(fontsize);
+
     DialogSprite.setPosition(0 + 5, win.getSize().y - DialogSprite.getGlobalBounds().height);
-    text.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 30);
+    textline1.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 30);
+    textline2.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 65);
+    textline3.setPosition(DialogSprite.getGlobalBounds().left + 20 + CharactersFace.getGlobalBounds().width, DialogSprite.getGlobalBounds().top + 100);
+    CharactersFace.setPosition(DialogSprite.getGlobalBounds().left + 20, DialogSprite.getGlobalBounds().top + 30);
+    
+   
     win.draw(DialogSprite);
-    win.draw(text);
+    win.draw(CharactersFace);
+    win.draw(textline1);
+    win.draw(textline2);
+    win.draw(textline3);
     win.display();
     win.clear();
 
