@@ -120,13 +120,18 @@ void GamePlay::GameEventHandler()
                 cout << "Can't Open The Dialog File for Tree " << endl;
                 return;
             }
+            UI.firstDraw = true;
             while (event.key.code != Keyboard::RShift)
             {
                 system.window.pollEvent(event);
                 DrawStaticObjects();
-
-                UI.CreateADialogFromTextFile( 29, font, system.window);
-                
+                if(UI.firstDraw){
+                for (unsigned int i = 0; i < UI.TextString.length(); i++){
+                UI.CreateADialogFromTextFile( 29, font, system.window,i);
+                }
+            }else{
+                UI.CreateADialogFromTextFile( 29, font, system.window,UI.TextString.length());
+            }
 
             }
 

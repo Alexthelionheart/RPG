@@ -124,9 +124,16 @@ File.open(filepath);
     return true;
 }
 
-void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win )
+void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win,int TheChar )
 {
     sf::Text text;
+    string Drawstring;
+    if(TheChar < TextString.length()){
+    Drawstring = Drawstring + TextString[TheChar];
+}else{
+    Drawstring = TextString;
+    firstDraw = false;
+}
     text.setFont(font);
     text.setString(TextString);
     text.setCharacterSize(fontsize);
