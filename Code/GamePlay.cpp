@@ -116,13 +116,13 @@ void GamePlay::GameEventHandler()
         if (event.key.code == Keyboard::Space )
         {
            
-
+            UI.LoadTextFile("Dialogs/Trees/Normal.txt");
             while (event.key.code != Keyboard::RShift)
             {
                 system.window.pollEvent(event);
                 DrawStaticObjects();
 
-                UI.CreateADialogFromTextFile( 29, font, system.window,"Dialogs/Trees/Normal.txt");
+                UI.CreateADialogFromTextFile( 29, font, system.window);
                 
 
             }

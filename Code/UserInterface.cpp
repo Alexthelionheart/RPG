@@ -73,7 +73,7 @@ void UserInterface::CreateADialog(string Text , int fontsize, Font font, RenderW
 
 }
 
-bool LoadTextFile(const char *filepath){
+bool UserInterface::LoadTextFile(const char *filepath){
 File.open(filepath);
     if (!File.is_open())
     {
@@ -82,7 +82,7 @@ File.open(filepath);
     }
 }
 
-void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win , const char *filepath)
+void UserInterface::CreateADialogFromTextFile(int fontsize , Font font , RenderWindow &win )
 {
     
     string WordString;
