@@ -101,7 +101,7 @@ bool UserInterface::LoadTextFile(const char *filepath)
             cout << WordString << " is a tag" << endl;
             //Chanking if it is a Image Tag
             if (WordString.find("IMG:"))
-            {
+            { 
                 WordString.erase(0, 6);
                 WordString = WordString.substr(0, WordString.size() - 2);
                 if (!CharactersFaceTexture.loadFromFile(  "Images/" + WordString))

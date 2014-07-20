@@ -127,7 +127,7 @@ int Environment::CheckforColisionwithTrees(Player &p)
             }
             if (CollisionArea.width < CollisionArea.height)
             {
-                //Collision is ether form left or Right
+                //Collision is either form left or Right
                 if (CollisionArea.contains({p.psprite.getPosition().x + p.psprite.getGlobalBounds().width - 1.f, CollisionArea.top + 1.f}))
                 {
                     //The Left Side of the Tree is hit

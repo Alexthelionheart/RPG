@@ -22,24 +22,24 @@ using namespace sf;
 class Environment
 {
 public:
-    // Defult Constructer (there are no defult values needed to be passed the main point of this is to draw inviderment sprites like trees grass , background etc.
+    // Default Constructed (there are no default values needed to be passed the main point of this is to draw individual spites like trees grass , background etc.
     Environment();
     //Textures
     Texture TreeTexture;
     Texture BackgroundTexture;
-    // Sprites
+    // Spites
     Sprite BackgroundSprite;
     Sprite Tree;
     FloatRect TreeBounds;
-    //Loaction the the Sprites Drawn
+    //Location the the Spites Drawn
     vector<vector<int>> TreeLocations;
-
+    vector<vector<int>> DecorLocations;
 
     // Loads files so Objects can be drawn to the screen
 
     bool LoadBackgroundFile(string filepath ,  RenderWindow &win);
     bool LoadTreeFiles(string filepath , RenderWindow &win , int x , int y , int w , int h);
-
+    bool loadDecorSpriteSheet(string filepath);
 
 
 
@@ -47,12 +47,14 @@ public:
     void DrawBackground( RenderWindow &win);
     void DrawBackground(string filepath, int x , int y, RenderWindow &win);
     void DrawTrees(  RenderWindow &win, int x , int y);
+    void DrawDecorItems(RenderWindow &win , IntRect SpriteLocation , int x , int y);
 
     //Checking For Collision
     int CheckforColisionwithTrees(Player &p );
-
+    int CheckForColisionWithDecorItems(Player &p);
+    //RedrawItems
     void RefreshTrees(RenderWindow &win);
-
+    void RefreshDecor(RenderWindow &win);
 
 };
 
