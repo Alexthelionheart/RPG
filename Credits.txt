@@ -14,3 +14,5 @@ Programming
 AlexTheLionHeart (Alexander Nahapetyan)
 
 Thanks to #SFML and #moosader IRC channals for all their help
+Thansk to daloser247 for helping me out with the code 
+
