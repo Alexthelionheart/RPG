@@ -139,7 +139,7 @@ void Player::Move(RenderWindow &win , bool animate , int colliosionSide)
     {
         win.setFramerateLimit(0);
     }
-    //Press L to activate Time  speed Limit Braker
+    //Press L to activate speed Limit Braker
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::U))
     {
         win.setFramerateLimit(60);
