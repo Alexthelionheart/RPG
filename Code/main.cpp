@@ -16,8 +16,10 @@ int main(int, char const **)
         return 1;
     }
 
-    while (game.running)
+    while (game.running){
+        cout << "Starting the game..." << endl;
         game.Start();
+    }
 
 
 

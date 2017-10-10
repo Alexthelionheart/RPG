@@ -196,14 +196,15 @@ bool GamePlay::Start()
     while ( system.window.isOpen())
     {
 
-        system.window.pollEvent(event);
+        while(system.window.pollEvent(event)){
 
         if (event.type == Event::Closed)
         {
+            cout << "Closing event detected" << endl;
             system.window.close();
 
         }
-
+}
         currentTime =  clock.restart().asSeconds();
 
 
